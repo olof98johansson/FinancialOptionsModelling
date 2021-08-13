@@ -26,6 +26,37 @@ where <i>T>0</i> is the time of maturity of the underlying asset [2].
 The financial utility of the Asian option is the reduction of market manipulation at maturity time <i>T</i>, a common problem in European options where the price could be manipulated upwards by speculators before the maturity. Even if prohibited, market manipulation occurs, but with the effect of not being as dependent of the expiration date, Asian options acts as a form of protection from such market manipulation [3]. Also, due to the averaging on the prices, the Asian option has lower volatility than the European options and thus typically making them cheaper than standard European options [4]. Because of this, they are often used by such traders that are being exposed under a period of time by the underlying asset [5]. A possible disadvantage of the Asian option, as previously mentioned is the reduced impact from volatility which implies that the ability to capitalize on the volatility peaks. Therefore, the possible profit from trading Asian options are less than non-averaging option.
 
 
+<h2 align="center"> Finite Difference Scheme</h2>
+
+
+
+<h1 align="center"> Results </h1>
+<h2 align="center"> Asian options compared to the standard European options </h2>
+
+In the figures below, the initial price for the Asian call option and Asian put option as well as the standard European call respectively put option for different values of the volatility (top) and initial prices (bottom) is shown.
+
+In terms of the volatility graph, its seen that the standard European call option converges to the initial stock price <i>S<sub>0</sub>=10</i> which is expected, whereas the Asian call option converges to a lower value. This is also expected due to the arithmetic average over time as this imply a lower volatility in the option compared to the standard European option, hence implying a lower price. Moreover, the Asian options and the standard European options follows similar behaviour, but with slower convergence for the Asian options. This, also due to the time averaging, as expected. Furthermore, for both the Asian options and the standard European options, the put options have a higher price than the call options. This is due to the choice of initial price <i>S<sub>0</sub></i> and strike price <i>K</i>. As <i>K > S<sub>0</sub></i>, the call options are clearly out of the money whereas the put options are in the money. This means that the call options have no intrinsic value and thus there is not profit between the current price <i>S<sub>0</sub></i> and the strike price <i>K</i>. With no intrinsic value, the premium of the call options are cheaper than the put options that have intrinsic value. This thus entails that the put options are more expensive than the call options as observed in the above figure.
+
+For varying values of the initial stock price <i>S<sub>0</sub></i> in the bottom figure, the Asian options and the standard European options follow a similar behaviour, but with some deviations. For the call options, the Asian call option is slightly shifted compared to the standard European call option. This is expected as the price of the Asian option is cheaper than the standard European option as previously discussed. However, due to the observed fluctuations in the Asian options, it is clear that there exist some flaws in the numerical computations. One reason could be the size of the partitions being to small and thus decreasing the accuracy of the numerical approximations. This is also seen in the Asian put option which also follows the behaviour of the standard European put option up until around <i>S<sub>0</sub> = 30</i> where it then deviates to lower values. This is also explained by the same argument as for the call options, that the Asian option is expected to be cheaper than the standard European option. Furthermore, the difference in behaviour between the call options and the put options is due to their intrinsic values. When <i>S<sub>0</sub> < K = 50</i>, the call options are out of the money which, as previously discussed, entails lower prices compared to the put options as the figure shows. Furthermore, it is seen that in the inteval for <i>S<sub>0</sub> < 30</i>, the call option prices are almost zero. Being so far out of the money the implied volatility is very high and thus, this behaviour is expected. Similarly in the same interval, the put options are far in the money and thus have a very high premium, making them very expensive. The same argument, but other way around holds for the interval at the other extreme, at around <i>S<sub>0</sub> > 70</i> for the Asian put option and around <i>S<sub>0</sub> > 90</i> for the standard European put option.
+
+ Furthermore, when the options are at the money, for <i>S<sub>0</sub> = K = 50</i>, the expected behaviour is that <i>&Pi;<sub>AC</sub>(0) = &Pi;<sub>AP</sub>(0)</i> and similarly <i>&Pi;<sub>EC</sub>(0) = &Pi;<sub>EP</sub>(0)</i>. This due to their intrinsic values being equally zero with the same extrinsic values. As the figure shows, this is almost the case for the standard European options as their intersection is around <i>S<sub>0</sub> &approx; 48</i>, but not the case for the Asian options whose intersection is around <i>S<sub>0</sub> &approx; 45</i>. This result could also be caused by flaws in the numerical computation as in the case of their fluctuations. 
+
+ Clearly the interval for the values of <i>&sigma;</i> and <i>S<sub>0</sub></i> in the top figure is quite unrealistic, as the volatility is within the interval <i>&sigma; &in; (0, 1)</i> and the price of the underlying asset (in this case the stock price), is much closer to the strike price <i>K</i>, a more realistic modelling would be to examine the the options in under these conditions.
+  
+  
+  Volatility &sigma;             |  Initial price <i>S<sub>0</sub></i>
+:-------------------------:|:-------------------------:
+![asian_vol](https://github.com/olof98johansson/FinancialOptionsModelling/blob/main/Results/comparison_volatility.png?raw=True)  |   ![asian_price](https://github.com/olof98johansson/FinancialOptionsModelling/blob/main/Results/comparison_initial.png?raw=True)
+  
+  
+  
+  <h2 align="center"> FDS method compared to the Control Variate Monte Carlo </h2>
+  
+
+
+
+
+
 <h2 align="center">Bibliography</h2>
 [1] Erik Wiklund. <i>Asian Option Pricing and Volatility</i>, 2012. URL: https://www.math.kth.se/matstat/seminarier/reports/M-exjobb12/120412a.pdf. Accessed: 2021-02-11.
 
